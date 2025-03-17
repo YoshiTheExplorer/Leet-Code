@@ -3,31 +3,81 @@ import java.util.*;
 class Solution {
     public static List<Integer> spiralOrder(int[][] matrix) {
       
-      List<Integer> output;
+      List<Integer> output = new ArrayList<>();
       
-      for(int i = 0; i < matrix.length; i++) {
-        for(int j = 0; j < matrix[i].length; j++) {
-          System.out.println(matrix[i][j]);
+      int x_max = matrix.length;
+      int y_max = matrix[0].length;
+      
+      int x_min = 0;
+      int y_min = 0;
+      
+      int count = x_max * y_max;
+      
+      int x = 0;
+      int y = 0;
+      
+      boolean right = true;
+      boolean down = false;
+      
+      for(int i = 0; i < count; i++) {
+        
+        //hit right, go down by i
+        if(x >= x_max) {
+          x--;
+          --x_max;
+          right = false;
+          down = true;
         }
         
-        if(i == matrix[i].length-1) {
-          //go down
+        //hit bottom, go left by j
+        if(y >= y_max) {
+          y--;
+          --y_max;
+          right = true;
+          down = true;
         }
         
-        if(i == matrix.length-1) {
+        //hit left, go up by i
+        if(x < x_min) {
+          x++;
+          ++x_min;
+          right = false;
+          down = false;
+        }
+        
+        //hit top, go right by i
+        if(y < y_min) {
+          y++;
+          ++y_min;
+          right = true;
+          down = false;
+        }
+        
+        if(right && !down) {
+          //go right
+          output.add(matrix[y][x]);
+          ++x;
+          
+        } else if(right && down) {
           //go left
+          output.add(matrix[y][x]);
+          --x;
+          
+        } else if(!right && down) {
+          // go down
+          output.add(matrix[y][x]);
+          ++y;
+          
+        } else if(!right && !down) {
+          // go up
+          output.add(matrix[y][x]);
+          --y;
+          
         }
         
-        if(i == 0) {
-          //go up
-        }
-        
-        if(output.get(i) != null) {
-          //go left
-        }
       }
       
-      return null;
+      return output;
     }
     
     public static void main(String[] arg) {
