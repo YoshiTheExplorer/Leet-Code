@@ -2,37 +2,23 @@ import java.util.*;
 
 class Solution {
   public void rotate(int[][] matrix) {
-    int[][] rotated = new int[matrix.length][matrix.length];
-
-    int x = 0;
-    int y = 0;
-
-    int x_rotate = matrix.length - 1;
-    int y_rotate = matrix.length - 1;
-
-    while ((x_rotate >= 0) && (y_rotate >= 0)) {
-      rotated[y_rotate][x_rotate] = matrix[y][x];
-
-      x++;
-      y_rotate++;
-
-      // if hit max length of y, increase x
-
-      if (x > matrix.length) {
-        ++y;
-        x = 0;
-
-        y_rotate = 0;
-        --x_rotate;
+    int n = matrix.length;
+    
+    for(int i = 0; i < n; i++) {
+      for(int j = i; j < n; j++) {
+        int temp = matrix[i][j];
+        matrix[i][j] = matrix[j][i];
+        matrix[j][i] = temp;
       }
-
     }
     
-    matrix = rotated;
-
-  }
-
-  public static void main(String[] arg) {
-
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; j < n /2; j++) {
+        int temp = matrix[i][j];
+        matrix[i][j] = matrix[i][n - j - 1];
+        matrix[i][n - j - 1] = temp;
+      }
+    }
+    
   }
 }
