@@ -22,16 +22,14 @@ class Solution {
       for(int i = 0; i < count; i++) {
         
         //hit right, go down by i
-        if(x >= x_max) {
-          x--;
+        if(x >= x_max-1) {
           --x_max;
           right = false;
           down = true;
         }
         
         //hit bottom, go left by j
-        if(y >= y_max) {
-          y--;
+        if(y >= y_max-1) {
           --y_max;
           right = true;
           down = true;
@@ -56,21 +54,25 @@ class Solution {
         if(right && !down) {
           //go right
           output.add(matrix[y][x]);
+          System.out.println(matrix[y][x]);
           ++x;
           
         } else if(right && down) {
           //go left
           output.add(matrix[y][x]);
+          System.out.println(matrix[y][x]);
           --x;
           
         } else if(!right && down) {
           // go down
           output.add(matrix[y][x]);
+          System.out.println(matrix[y][x]);
           ++y;
           
         } else if(!right && !down) {
           // go up
           output.add(matrix[y][x]);
+          System.out.println(matrix[y][x]);
           --y;
           
         }
