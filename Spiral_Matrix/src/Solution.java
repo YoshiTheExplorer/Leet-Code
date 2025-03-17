@@ -3,7 +3,29 @@ import java.util.*;
 class Solution {
     public static List<Integer> spiralOrder(int[][] matrix) {
       
+      List<Integer> output;
       
+      for(int i = 0; i < matrix.length; i++) {
+        for(int j = 0; j < matrix[i].length; j++) {
+          System.out.println(matrix[i][j]);
+        }
+        
+        if(i == matrix[i].length-1) {
+          //go down
+        }
+        
+        if(i == matrix.length-1) {
+          //go left
+        }
+        
+        if(i == 0) {
+          //go up
+        }
+        
+        if(output.get(i) != null) {
+          //go left
+        }
+      }
       
       return null;
     }
