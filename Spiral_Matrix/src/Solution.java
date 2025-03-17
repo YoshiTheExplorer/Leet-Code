@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
   
-  public List<Integer> spiralOrder(int[][] matrix) {
+  public static List<Integer> spiralOrder(int[][] matrix) {
     List<Integer> res = new ArrayList<>();
     int top = 0, bottom = matrix.length - 1;
     int left = 0, right = matrix[0].length - 1;
