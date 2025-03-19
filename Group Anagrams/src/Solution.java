@@ -1,30 +1,33 @@
 import java.util.*;
 
 class Solution {
-  public List<List<String>> groupAnagrams(String[] strs) {
+  public static List<List<String>> groupAnagrams(String[] strs) {
     List<List<String>> listList = new ArrayList<>();
     Map<String, Integer> map = new HashMap<>();
     int num = 0;
-    int index;
     
     for(int i = 0; i < strs.length; i++) {
       char[] word = strs[i].toCharArray();
       Arrays.sort(word);
+      String str = new String(word);
       
-      map.getOrDefault(word.toString(), num);
-      if(map.get(word.toString()) == null) {
-        map.put(word.toString(), num);
+      //find pattern, get index for listList
+      if(map.get(str) == null) {
+        map.put(str, num);
+        listList.add(num, new ArrayList<String>());
         num++;
       }
-      
-      index = map.get(word);
-      listList.add(null);
-      
-      
-      
+      listList.get(map.get(str)).add(strs[i]);
     }
     
     return listList;
+  }
+  
+  public static void main(String[] arg) {
+    String[] strs = {"act","pots","tops","cat","stop","hat"};
+    
+    System.out.println(groupAnagrams(strs));
+    
   }
 }
 
