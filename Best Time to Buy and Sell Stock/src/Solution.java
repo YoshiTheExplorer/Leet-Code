@@ -1,22 +1,20 @@
 class Solution {
   public int maxProfit(int[] prices) {
     int a = 0;
-    int b = prices.length;
-    int max = -9999;
+    int b = 1;
+    int max = 0;
     int curr;
-    while(a < b) {
+    while(b != prices.length) {
       //Sell Price is Greater, then check
       curr = prices[b] - prices[a];
       if(curr > max) {
         max = curr;
       }
-      
-      if(curr > 0) { //Sell Price is Greater, shift Buy Price
-        a++;
-      } else { //Buy Price is Greater, shift Buy Price
-        b--;
+      a++;
+      if(a == b) {
+        a = 0;
+        ++b;
       }
-      
     }
     return max;
   }
